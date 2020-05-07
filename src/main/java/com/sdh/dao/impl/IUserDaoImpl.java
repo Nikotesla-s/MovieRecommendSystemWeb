@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class IUserDaoImpl implements IUserDao {
     @Override
@@ -31,6 +32,36 @@ public class IUserDaoImpl implements IUserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public void addFavoriteMovie(int uid, int mid) {
+
+    }
+
+    @Override
+    public void addDislikeMovie(int uid, int mid) {
+
+    }
+
+    @Override
+    public void deleteFavoriteMovie(int uid, int mid) {
+
+    }
+
+    @Override
+    public void deleteDislikeMovie(int uid, int mid) {
+
+    }
+
+    @Override
+    public List<Integer> findAllFavoriteMovies(int uid) {
+        return null;
+    }
+
+    @Override
+    public List<Integer> findAllDislikeMovies(int uid) {
         return null;
     }
 }

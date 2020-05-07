@@ -17,16 +17,15 @@ import java.util.List;
  */
 public class IMovieDaoImpl implements IMovieDao {
 
-
-
+    Connection connection = DBUtil.getJDBCConnection();
+    PreparedStatement ps=null;
+    ResultSet rs=null;
+    Movies movie=new Movies();
+    List<Movies> moviesList=null;
     //根据id查询电影
     @Override
     public Movies findById(int id) {
         String sql="select * from movies where id = ?";
-        Connection connection = DBUtil.getJDBCConnection();
-        PreparedStatement ps=null;
-        ResultSet rs=null;
-        Movies movies=new Movies();
         try {
             ps=connection.prepareStatement(sql);
             ps.setInt(1,id);
@@ -34,8 +33,8 @@ public class IMovieDaoImpl implements IMovieDao {
             while (rs.next()){
                 String name=rs.getString(2);
                 String type=rs.getString(3);
-                movies.setName(name);
-                movies.setType(type);
+                movie.setName(name);
+                movie.setType(type);
             }
 
         } catch (SQLException e) {
@@ -43,7 +42,7 @@ public class IMovieDaoImpl implements IMovieDao {
         }finally {
             DBUtil.colse(rs,ps,connection);
         }
-        return movies;
+        return movie;
     }
     //推荐结果id数组查询
     @Override
@@ -84,5 +83,75 @@ public class IMovieDaoImpl implements IMovieDao {
 
 
         return movieList;
+    }
+
+    @Override
+    public List<Movies> findByName(String name) {
+        String sql="select * from movies where name like ?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,name);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                String MName=rs.getString(2);
+                String type=rs.getString(3);
+                movie.setName(MName);
+                movie.setType(type);
+                moviesList.add(movie);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.colse(rs,ps,connection);
+        }
+        return moviesList;
+
+    }
+
+    @Override
+    public List<Movies> findByType(String type) {
+        String sql="select * from movies where type like ?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,type);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                String MName=rs.getString(2);
+                String MType=rs.getString(3);
+                movie.setName(MName);
+                movie.setType(MType);
+                moviesList.add(movie);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.colse(rs,ps,connection);
+        }
+        return moviesList;
+    }
+
+    @Override
+    public List<Movies> findByTime(String time) {
+        String sql="select * from movies where name like ?";
+        try {
+            ps=connection.prepareStatement(sql);
+            ps.setString(1,time);
+            rs=ps.executeQuery();
+            while (rs.next()){
+                String MName=rs.getString(2);
+                String type=rs.getString(3);
+                movie.setName(MName);
+                movie.setType(type);
+                moviesList.add(movie);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.colse(rs,ps,connection);
+        }
+        return moviesList;
     }
 }
