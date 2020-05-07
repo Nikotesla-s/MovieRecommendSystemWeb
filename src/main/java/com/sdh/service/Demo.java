@@ -30,7 +30,7 @@ public class Demo {
         DataSource dataSource=DBUtil.getMysqlDataSource();
         JDBCDataModel dataModel=new MySQLJDBCDataModel(dataSource,"movie_preference","userID","movieID","preference","timestamp");
         //使用文件类型数据，可以改成从数据库加载数据对象的形式实现持久化
-        File file = new File("F:\\下载\\迅雷下载\\ml-10m\\ml-10M100K\\ratings.dat");
+        File file = new File("D:\\下载\\迅雷下载\\ml-10M100K\\ratings.dat");
         try {
             //把MySQLJDBCDataModel对象赋值给DataModel
             //DataModel model = dataModel;
@@ -44,15 +44,14 @@ public class Demo {
             Recommender recommender = new GenericUserBasedRecommender(model, userNeighborhood, similarity);
             //给用户ID为5的用户推荐10部电影
             List<RecommendedItem> recommendedItemList = recommender.recommend(5, 10);
+            System.out.println(recommendedItemList);
             //处理结果
             for (RecommendedItem recommendedItem : recommendedItemList) {
 
                 System.out.println(recommendedItem);
             }
 
-        } catch (TasteException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (TasteException | IOException e) {
             e.printStackTrace();
         }
     }

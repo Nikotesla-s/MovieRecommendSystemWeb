@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class Recommend {
 
-    public List<RecommendedItem> getRecommendResults(int uid,int size) throws TasteException {
+    public static List<RecommendedItem> getRecommendResults(int uid, int size) throws TasteException {
         //准备电影评分数据
         DataSource dataSource=DBUtil.getMysqlDataSource();
         JDBCDataModel dataModel=new MySQLJDBCDataModel(dataSource,"movie_preference","userID","movieID","preference","timestamp");
@@ -32,7 +32,7 @@ public class Recommend {
         //计算相似度
         UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
         //计算最近领域：固定数量的邻居
-        UserNeighborhood userNeighborhood = new NearestNUserNeighborhood(100, similarity, model);
+        UserNeighborhood userNeighborhood = new NearestNUserNeighborhood(1000, similarity, model);
         //构建推荐器：基于用户的协同过滤算法
         Recommender recommender = new GenericUserBasedRecommender(model, userNeighborhood, similarity);
         //给用户的用户推荐电影
@@ -40,6 +40,14 @@ public class Recommend {
 
         return recommendedItemList;
     }
-
+    public static void main(String[] args) {
+        List<RecommendedItem> recommendedItemList;
+        try {
+            recommendedItemList=getRecommendResults(5,5);
+            System.out.println(recommendedItemList);
+        } catch (TasteException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
