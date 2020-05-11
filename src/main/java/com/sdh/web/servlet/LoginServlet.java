@@ -29,16 +29,18 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         User user=new User();
+        user.setUsername(username);
+        user.setPassword(password);
         //封装用户信息
-        IUserDaoImpl iUserDao=new IUserDaoImpl();
-        user=iUserDao.finUserByName(username);
+        //IUserDaoImpl iUserDao=new IUserDaoImpl();
+        //user=iUserDao.finUserByName(username);
         //调用服务返回推荐的电影信息
         MovieDaoServiceImpl movieDaoService=new MovieDaoServiceImpl();
         List<Movies> movieList = movieDaoService.recommendedMovies(user);
         //转发至主页
         request.setAttribute("movieList",movieList);
         request.setAttribute("user",user);
-        request.getRequestDispatcher("webapp\\index.html").forward(request,response);
+        request.getRequestDispatcher("/index.html").forward(request,response);
 
 
     }

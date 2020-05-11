@@ -8,6 +8,7 @@ import com.sdh.util.Recommend;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.recommender.RecommendedItem;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class MovieDaoServiceImpl implements IMovieDaoService {
         try {
             recommendedItemList=recommend.getRecommendResults(uid,size);
             movieList = iMovieDao.findByIdList(recommendedItemList);
-        } catch (TasteException e) {
+        } catch (TasteException | IOException e) {
             e.printStackTrace();
         }
         return movieList;

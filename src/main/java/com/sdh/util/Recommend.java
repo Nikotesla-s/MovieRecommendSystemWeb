@@ -14,6 +14,8 @@ import org.apache.mahout.cf.taste.similarity.UserSimilarity;
 import org.apache.mahout.cf.taste.similarity.precompute.example.GroupLensDataModel;
 
 import javax.sql.DataSource;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -21,14 +23,15 @@ import java.util.List;
  */
 public class Recommend {
 
-    public static List<RecommendedItem> getRecommendResults(int uid, int size) throws TasteException {
+    public static List<RecommendedItem> getRecommendResults(int uid, int size) throws TasteException, IOException {
         //准备电影评分数据
+        File file = new File("D:\\下载\\迅雷下载\\ml-10M100K\\ratings.dat");
         DataSource dataSource=DBUtil.getMysqlDataSource();
         JDBCDataModel dataModel=new MySQLJDBCDataModel(dataSource,"movie_preference","userID","movieID","preference","timestamp");
         //把MySQLJDBCDataModel对象赋值给DataModel
-        DataModel model = dataModel;
+        //DataModel model = dataModel;
         //将数据加载到内存中，GroupLensDataModel是针对开放电影评论数据的
-        //DataModel model = new GroupLensDataModel(file);
+        DataModel model = new GroupLensDataModel(file);
         //计算相似度
         UserSimilarity similarity = new PearsonCorrelationSimilarity(model);
         //计算最近领域：固定数量的邻居
@@ -39,15 +42,6 @@ public class Recommend {
         List<RecommendedItem> recommendedItemList = recommender.recommend(uid, size);
 
         return recommendedItemList;
-    }
-    public static void main(String[] args) {
-        List<RecommendedItem> recommendedItemList;
-        try {
-            recommendedItemList=getRecommendResults(5,5);
-            System.out.println(recommendedItemList);
-        } catch (TasteException e) {
-            e.printStackTrace();
-        }
     }
 
 }

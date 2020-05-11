@@ -1,4 +1,4 @@
-package com.sdh.service;
+package com.sdh.util;
 
 import com.sdh.util.DBUtil;
 import org.apache.mahout.cf.taste.common.TasteException;

@@ -36,13 +36,13 @@
         <h1>登录</h1>
 
         <!-- 登录表单 -->
-        <form name="/LoginServlet">
+        <form id="loginPage" action="LoginServlet" method="post">
           <div class="form-group">
-            <input type="用户名" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
+            <input type="用户名" class="form-control" name="username" id="username" aria-describedby="usernameHelp" placeholder="Enter username">
 
           </div>
           <div class="form-group">
-            <input type="password" class="form-control" id="Password" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
           </div>
 
           <br>
