@@ -12,6 +12,35 @@ import java.util.List;
 
 public class IUserDaoImpl implements IUserDao {
     @Override
+    public boolean findUserByIdAndPassword(User user) {
+        String sql="select * from user where uid=? and password=?";
+        PreparedStatement ps=null;
+        ResultSet rs=null;
+        Connection connection=null;
+
+        try {
+            connection=DBUtil.getJDBCConnection();
+            ps=connection.prepareStatement(sql);
+            ps.setInt(1,user.getUid());
+            ps.setString(2,user.getPassword());
+            rs=ps.executeQuery();
+            if(rs==null){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public User findUserById(int id) {
+        return null;
+    }
+
+    @Override
     public User finUserByName(String username) {
         String sql="select * from user where username = ?";
         PreparedStatement ps=null;

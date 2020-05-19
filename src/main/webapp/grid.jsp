@@ -2,15 +2,14 @@
   Created by IntelliJ IDEA.
   User: SDH
   Date: 2020/5/12
-  Time: 17:00
+  Time: 16:59
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Dashboard - Bootstrap Admin</title>
+    <title>个人收藏</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -25,7 +24,7 @@
     <link href="./css/adminia-responsive.css" rel="stylesheet" />
 
     <link href="./css/pages/dashboard.css" rel="stylesheet" />
-
+    <link href="./css/pages/plans.css" rel="stylesheet" />
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -54,18 +53,18 @@
 
                 <ul class="nav pull-right">
                     <li>
-                        <a href="#"><span class="badge badge-warning"></span></a>
+                        <a href="#"><span class="badge badge-warning">7</span></a>
                     </li>
 
                     <li class="divider-vertical"></li>
 
                     <li class="dropdown">
 
-                        <!--<a data-toggle="dropdown" class="dropdown-toggle " href="#">
+                        <a data-toggle="dropdown" class="dropdown-toggle " href="#">
                             Rod Howard <b class="caret"></b>
-                        </a>-->
+                        </a>
 
-                        <!--<ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
                             <li>
                                 <a href="./account.html"><i class="icon-user"></i> Account Setting  </a>
                             </li>
@@ -79,7 +78,7 @@
                             <li>
                                 <a href="./"><i class="icon-off"></i> Logout</a>
                             </li>
-                        </ul>-->
+                        </ul>
                     </li>
                 </ul>
 
@@ -114,7 +113,6 @@
                     </ul>
                 </li>
             </ul>
-
         </div> <!-- /container -->
 
     </div> <!-- /navbar-inner -->
@@ -158,7 +156,7 @@
 
                 <ul id="main-nav" class="nav nav-tabs nav-stacked">
 
-                    <li class="active">
+                    <li>
                         <a href="./">
                             <i class="icon-home"></i>
                             主页
@@ -166,7 +164,7 @@
                     </li>
 
                     <li>
-                        <a href="./faq.jsp">
+                        <a href="./faq.html">
                             <i class="icon-pushpin"></i>
                             问答
                         </a>
@@ -179,7 +177,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="./grid.html">
                             <i class="icon-th-large"></i>
                             收藏
@@ -201,20 +199,17 @@
                         </a>
                     </li>
 
-                    <!--<li>
-                        <a href="./login.html">
-                            <i class="icon-lock"></i>
-                            Login
-                        </a>
-                    </li>-->
+
 
                 </ul>
 
+
+
                 <hr />
 
-                <div class="sidebar-extra">
-                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>-->
-                </div> <!-- .sidebar-extra -->
+                <!--<div class="sidebar-extra">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+                </div> &lt;!&ndash; .sidebar-extra &ndash;&gt;-->
 
                 <br />
 
@@ -225,82 +220,18 @@
             <div class="span9">
 
                 <h1 class="page-title">
-                    <i class="icon-home"></i>
-                    主页
+                    <i class="icon-th-large"></i>
+                    收藏电影
                 </h1>
-
-                <!--<div class="stat-container">
-
-                    <div class="stat-holder">
-                        <div class="stat">
-                            <span>564</span>
-                            Completed Sales
-                        </div> &lt;!&ndash; /stat &ndash;&gt;
-                    </div> &lt;!&ndash; /stat-holder &ndash;&gt;
-
-                    <div class="stat-holder">
-                        <div class="stat">
-                            <span>423</span>
-                            Pending Sales
-                        </div> &lt;!&ndash; /stat &ndash;&gt;
-                    </div> &lt;!&ndash; /stat-holder &ndash;&gt;
-
-                    <div class="stat-holder">
-                        <div class="stat">
-                            <span>96</span>
-                            Returned Sales
-                        </div> &lt;!&ndash; /stat &ndash;&gt;
-                    </div> &lt;!&ndash; /stat-holder &ndash;&gt;
-
-                    <div class="stat-holder">
-                        <div class="stat">
-                            <span>2</span>
-                            Chargebacks
-                        </div> &lt;!&ndash; /stat &ndash;&gt;
-                    </div> &lt;!&ndash; /stat-holder &ndash;&gt;
-
-                </div> &lt;!&ndash; /stat-container &ndash;&gt;-->
-
-                <div class="widget">
-
-                    <!--<div class="widget-header">
-                        <i class="icon-signal"></i>
-                        <h3>Area Chart</h3>
-                    </div> &lt;!&ndash; /widget-header &ndash;&gt;
-
-                    <div class="widget-content">
-                        <div id="bar-chart" class="chart-holder"></div> &lt;!&ndash; /bar-chart &ndash;&gt;
-                    </div> &lt;!&ndash; /widget-content &ndash;&gt;-->
-
-                </div> <!-- /widget -->
-
-
-
                 <div class="widget widget-table">
 
                     <div class="widget-header">
                         <i class="icon-th-list"></i>
-                        <h3>推荐列表</h3>
+                        <h3>收藏列表</h3>
                     </div> <!-- /widget-header -->
 
                     <div class="widget-content">
 
-                        <table id="recommendMovieTable" class="table table-striped table-bordered">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>电影名称</th>
-                                <th>电影类型</th>
-                                <th>操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <th>#</th>
-                            <th>电影名称</th>
-                            <th>电影类型</th>
-                            <th>操作</th>
-                            </tbody>
-                        </table>
                         <table class="table table-striped table-bordered">
                             <thead>
                             <tr>
@@ -309,7 +240,7 @@
                                 <th>电影类型</th>
                                 <th>年份</th>
                                 <th>描述</th>
-                                <th>&nbsp;</th>
+                                <!--<th>&nbsp;</th>-->
                             </tr>
                             </thead>
 
@@ -442,38 +373,6 @@
 
                 </div> <!-- /widget -->
 
-
-
-
-                <div class="row">
-
-                    <div class="span5">
-
-                        <div class="widget">
-
-
-
-
-
-                        </div> <!-- /widget -->
-
-                    </div> <!-- /span5 -->
-
-                    <div class="span4">
-
-                        <div class="widget">
-
-                            <!--<div class="widget-header">
-                                <h3>4 Column</h3>
-                            </div> &lt;!&ndash; /widget-header &ndash;&gt;-->
-
-
-
-                        </div> <!-- /widget -->
-                    </div> <!-- /span4 -->
-
-                </div> <!-- /row -->
-
             </div> <!-- /span9 -->
 
 
@@ -486,49 +385,23 @@
 
 <div id="footer">
 
-    <div class="container">
-
-
-    </div> <!-- /container -->
+    <!--<div class="container">
+        <hr />
+        <p>&copy; 2012 Go Ideate.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+    </div> &lt;!&ndash; /container &ndash;&gt;-->
 
 </div> <!-- /footer -->
 
 
-<script language="JavaScript">
 
-    window.onload(function () {
-
-        showData(data);
-        $.get("LoginServlet",function () {
-
-            }
-        );
-
-    });
-
-    function showData(data) {
-        let str = " ";
-        for(let i=0; i<data.length; i++){
-            str="<tr><td>"+data[i].movieId+"</td><td>"+data[i].name+"</td><td>"+data[i].type+"</td></tr>";
-            $("#recommendMovieTable").append(str);
-        }
-    }
-
-</script>
 
 <!-- Le javascript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="./js/jquery-1.7.2.min.js"></script>
-<script src="./js/excanvas.min.js"></script>
-<script src="./js/jquery.flot.js"></script>
-<script src="./js/jquery.flot.pie.js"></script>
-<script src="./js/jquery.flot.orderBars.js"></script>
-<script src="./js/jquery.flot.resize.js"></script>
 
 
 <script src="./js/bootstrap.js"></script>
-<script src="./js/charts/bar.js"></script>
 
 </body>
 </html>

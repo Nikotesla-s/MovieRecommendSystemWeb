@@ -27,7 +27,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
 
 <body>
-	
+
 <div class="navbar navbar-fixed-top">
 	
 	<div class="navbar-inner">
@@ -276,7 +276,23 @@
 					</div> <!-- /widget-header -->
 					
 					<div class="widget-content">
-					
+
+						<table id="recommendMovieTable" class="table table-striped table-bordered">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>电影名称</th>
+									<th>电影类型</th>
+									<th>操作</th>
+								</tr>
+							</thead>
+							<tbody>
+									<th>#</th>
+									<th>电影名称</th>
+									<th>电影类型</th>
+									<th>操作</th>
+							</tbody>
+						</table>
 						<table class="table table-striped table-bordered">
 							<thead>
 								<tr>
@@ -470,7 +486,27 @@
 </div> <!-- /footer -->
 
 
-    
+<script language="JavaScript">
+
+	window.onload(function () {
+
+		showData(data);
+		$.get("LoginServlet",function () {
+
+				}
+		);
+
+	});
+
+	function showData(data) {
+		let str = " ";
+		for(let i=0; i<data.length; i++){
+			str="<tr><td>"+data[i].movieId+"</td><td>"+data[i].name+"</td><td>"+data[i].type+"</td></tr>";
+			$("#recommendMovieTable").append(str);
+		}
+	}
+
+</script>
 
 <!-- Le javascript
 ================================================== -->

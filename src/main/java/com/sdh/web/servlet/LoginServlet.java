@@ -5,6 +5,7 @@ import com.sdh.domain.Movies;
 import com.sdh.domain.User;
 import com.sdh.service.IMovieDaoService;
 import com.sdh.service.impl.MovieDaoServiceImpl;
+import com.sdh.service.impl.UserDaoServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+
+import static java.awt.SystemColor.info;
 
 /**
  * @author win10
@@ -31,16 +34,15 @@ public class LoginServlet extends HttpServlet {
         User user=new User();
         user.setUsername(username);
         user.setPassword(password);
-        //封装用户信息
-        //IUserDaoImpl iUserDao=new IUserDaoImpl();
-        //user=iUserDao.finUserByName(username);
-        //调用服务返回推荐的电影信息
-        MovieDaoServiceImpl movieDaoService=new MovieDaoServiceImpl();
-        List<Movies> movieList = movieDaoService.recommendedMovies(user);
-        //转发至主页
-        request.setAttribute("movieList",movieList);
-        request.setAttribute("user",user);
-        request.getRequestDispatcher("/index.html").forward(request,response);
+        UserDaoServiceImpl userDaoService=new UserDaoServiceImpl();
+        boolean isUser=userDaoService.login(user);
+        if(isUser){
+            request.setAttribute("userName",user.getUsername());
+            request.getRequestDispatcher("/index.html").forward(request,response);
+        }else{
+            request.getRequestDispatcher("/loginFailed.html").forward(request,response);
+        }
+
 
 
     }

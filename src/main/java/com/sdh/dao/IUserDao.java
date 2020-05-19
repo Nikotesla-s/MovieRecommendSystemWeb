@@ -11,6 +11,10 @@ public interface IUserDao {
      * @return User
      *
      */
+    //通过id和password查找用户
+    boolean findUserByIdAndPassword(User user);
+    //通过id查找user
+    User findUserById(int id);
     //通过姓名查找
     User finUserByName(String username);
     //添加喜欢的电影
